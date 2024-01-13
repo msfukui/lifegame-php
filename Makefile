@@ -5,4 +5,4 @@ clean:
 build:
 	-@# nothing
 run:
-	-@php Main.php
+	-@docker compose exec dev php src/Main.php

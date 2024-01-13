@@ -1,0 +1,7 @@
+.DS_Store
+.*.swp
+/tmp
+/bin/composer
+/vendor
+/.php-cs-fixer.cache
+/.php-cs-fixer.php
