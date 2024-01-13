@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+    paths_ignore:
+      - README.md
+      - .gitignore
+  pull_request:
+    branches: [ main ]
+    paths_ignore:
+      - README.md
+      - .gitignore
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: none, mbstring, dom, tokenizer, xml, xmlwriter, simplexml
+          coverage: xdebug
+
+      - name: Install Composer Dependencies
+        run: composer install
+
+      #- name: Format
+      # run: vendor/bin/php-cs-fixer fix --dry-run --diff
+
+      - name: Cyclomatic complexity
+        run: composer phpmd:ci
+
+      - name: UnitTest and Coverage
+        run: vendor/bin/pest --coverage

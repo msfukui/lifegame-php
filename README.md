@@ -1,4 +1,6 @@
-# Lifegame
+# Lifegame-php
+
+[![CI](https://github.com/msfukui/lifegame-php/actions/workflows/php.yml/badge.svg)](https://github.com/msfukui/lifegame-php/actions/workflows/php.yml)
 
 ## How to run
 ```
