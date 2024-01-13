@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
-describe('Main', function () {
+namespace LifeGamePhp;
 
-    it('sample', function () {
-        $this->expect(1)->toBe(1);
-    });
+it('Main', function () {
+    ob_start();
+    require_once __DIR__ . '/../src/Main.php';
+    $output = ob_get_clean();
+    expect($output)->toBe(file_get_contents(__DIR__ . '/success.txt'));
 });
