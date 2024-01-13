@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LifeGamePhp;
 
+// 枠の初期化
 $b = [];
 for ($i = 0; $i < 5; $i++) {
     for ($j = 0; $j < 5; $j++) {
@@ -11,10 +12,12 @@ for ($i = 0; $i < 5; $i++) {
     }
 }
 
+// ブリンカーの初期値を設定
 $b[2][1] = "■";
 $b[2][2] = "■";
 $b[2][3] = "■";
 
+// 初期状態を出力
 for ($i = 0; $i < 5; $i++) {
     $line = "";
     for ($j = 0; $j < 5; $j++) {
@@ -23,7 +26,7 @@ for ($i = 0; $i < 5; $i++) {
     echo($line . PHP_EOL);
 }
 
-
+// 3世代進めて出力
 for ($times = 0; $times < 3; $times++) {
     $bb = [];
     for ($i = 0; $i < 5; $i++) {
@@ -90,6 +93,7 @@ for ($times = 0; $times < 3; $times++) {
     }
     $b = $bb;
 
+    // 出力
     echo($times . "==========" . PHP_EOL);
     for ($i = 0; $i < 5; $i++) {
         $line = "";
