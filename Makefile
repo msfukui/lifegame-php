@@ -7,6 +7,8 @@ build:
 run:
 	-@docker compose exec dev php src/Main.php
 
+analyze:
+	-@docker compose exec dev vendor/bin/phpmd src text phpmd.xml
 format:
 	-@docker compose exec dev vendor/bin/php-cs-fixer fix --dry-run --diff
 test:
