@@ -25,13 +25,13 @@ final class LifeGame
         return new self($board);
     }
 
-    public function run(int $genNumber): void
+    public function run(int $generationNumber): void
     {
         // 初期値を出力する
         $this->printBoard();
 
         // 指定された世代数の数だけ世代を進めて都度結果を出力する
-        for ($times = 0; $times < $genNumber; $times++) {
+        for ($times = 0; $times < $generationNumber; $times++) {
             $this->next();
             $this->printBoardWithGen($times);
         }
@@ -48,12 +48,6 @@ final class LifeGame
             }
             echo($line . PHP_EOL);
         }
-    }
-
-    private function printBoardWithGen(int $times): void
-    {
-        echo($times . '==========' . PHP_EOL);
-        $this->printBoard();
     }
 
     private function next(): void
@@ -119,5 +113,11 @@ final class LifeGame
         }
 
         return $count;
+    }
+
+    private function printBoardWithGen(int $times): void
+    {
+        echo($times . '==========' . PHP_EOL);
+        $this->printBoard();
     }
 }
