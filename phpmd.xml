@@ -9,7 +9,7 @@
     <!-- コードの循環的複雑度を検出 -->
     <rule ref="rulesets/codesize.xml/CyclomaticComplexity">
         <properties>
-            <property name="reportLevel" value="43"/>
+            <property name="reportLevel" value="37"/>
         </properties>
     </rule>
 </ruleset>

@@ -7,6 +7,8 @@ build:
 run:
 	-@docker compose exec dev php src/Main.php
 
+ci: analyze format test
+
 analyze:
 	-@docker compose exec dev vendor/bin/phpmd src text phpmd.xml
 format:

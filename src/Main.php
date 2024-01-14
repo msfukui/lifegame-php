@@ -6,4 +6,12 @@ namespace LifeGamePhp;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-(new LifeGame())->init();
+LifeGame::create(
+    [
+        ['□', '□', '□', '□', '□'],
+        ['□', '□', '□', '□', '□'],
+        ['□', '■', '■', '■', '□'],
+        ['□', '□', '□', '□', '□'],
+        ['□', '□', '□', '□', '□'],
+    ]
+)->run(3);
