@@ -70,7 +70,6 @@ final class LifeGame
         $this->board = Board::create($nextBoard);
     }
 
-
     /*
      * TODO: ルールに関する実処理は一部を Board クラスに移譲したい
      */

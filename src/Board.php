@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LifeGamePhp;
 
 use Exception;
+use LifeGamePhp\Terminal\AnsiEscapeCode;
 
 readonly class Board
 {
@@ -117,6 +118,21 @@ readonly class Board
         }
     }
 
+
+    /**
+     * 表示内容をクリアした上でボードの内容を標準出力する
+     * 次の表示への切り替えを考慮して, 指定した一定秒待機する
+     *
+     * @param int $waitingSeconds
+     * @return void
+     */
+    public function printClean(int $waitingSeconds = 1): void
+    {
+        AnsiEscapeCode::clear();
+        AnsiEscapeCode::moveCursorToUpperLeft();
+        $this->print();
+        sleep($waitingSeconds);
+    }
 
     /**
      * 指定したセルの周囲の生きているセルの数を数えて返す
