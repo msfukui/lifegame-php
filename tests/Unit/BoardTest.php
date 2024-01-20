@@ -126,3 +126,28 @@ describe('Board#outputCell', function () {
         )->outputCell(2, 2))->toBe('■');
     });
 });
+
+describe('Board#printClean', function () {
+
+    it('ライフゲーム(ブリンカー)の初期値を標準出力する', function () {
+        ob_start();
+        Board::create(
+            [
+                ['□', '□', '□', '□', '□'],
+                ['□', '□', '□', '□', '□'],
+                ['□', '■', '■', '■', '□'],
+                ['□', '□', '□', '□', '□'],
+                ['□', '□', '□', '□', '□'],
+            ]
+        )->printClean(0);
+        $output = ob_get_clean();
+        expect($output)->toBe(
+            "\033[2J\033[0;0H\033[0;0H" .
+            '□□□□□' . PHP_EOL .
+            '□□□□□' . PHP_EOL .
+            '□■■■□' . PHP_EOL .
+            '□□□□□' . PHP_EOL .
+            '□□□□□' . PHP_EOL
+        );
+    });
+});

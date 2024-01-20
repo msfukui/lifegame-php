@@ -9,8 +9,6 @@ use LifeGamePhp\Terminal\AnsiEscapeCode;
 
 readonly class Board
 {
-    private const int printInterval = 1;
-
     private int $maxX;
     private int $maxY;
 
@@ -123,16 +121,17 @@ readonly class Board
 
     /**
      * 表示内容をクリアした上でボードの内容を標準出力する
-     * 次の表示への切り替えを考慮して一定時間待機する
+     * 次の表示への切り替えを考慮して, 指定した一定秒待機する
      *
+     * @param int $waitingSeconds
      * @return void
      */
-    public function printClean(): void
+    public function printClean(int $waitingSeconds = 1): void
     {
         AnsiEscapeCode::clear();
         AnsiEscapeCode::moveCursorToUpperLeft();
         $this->print();
-        sleep(self::printInterval);
+        sleep($waitingSeconds);
     }
 
     /**
