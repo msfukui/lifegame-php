@@ -15,3 +15,6 @@ format:
 	-@docker compose exec dev vendor/bin/php-cs-fixer fix --dry-run --diff
 test:
 	-@docker compose exec dev vendor/bin/pest
+
+sample:
+	-@docker compose exec dev php src/Sample.php
