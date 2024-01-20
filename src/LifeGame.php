@@ -32,7 +32,7 @@ final class LifeGame
     }
 
     /**
-     * ライフゲームを指定された世代分実行する
+     * ライフゲームを指定された世代分実行して出力する
      *
      * @param int $numberOfGenerations
      * @return void
@@ -47,6 +47,25 @@ final class LifeGame
         for ($times = 0; $times < $numberOfGenerations; $times++) {
             $this->next();
             $this->printBoardWithGen($times);
+        }
+    }
+
+    /**
+     * ライフゲームを指定された世代分実行して上書き出力する
+     *
+     * @param int $numberOfGenerations
+     * @return void
+     * @throws Exception
+     */
+    public function runClean(int $numberOfGenerations): void
+    {
+        // 初期値を出力する
+        $this->printBoardClean();
+
+        // 指定された世代数の数だけ世代を進めて都度結果を出力する
+        for ($times = 0; $times < $numberOfGenerations; $times++) {
+            $this->next();
+            $this->printBoardCleanWithGen($times);
         }
     }
 
@@ -119,5 +138,27 @@ final class LifeGame
     {
         echo($numberOfGenerations . '==========' . PHP_EOL);
         $this->printBoard();
+    }
+
+    /**
+     * 現在のボードの内容を上書き出力する
+     *
+     * @return void
+     */
+    private function printBoardClean(): void
+    {
+        $this->board->printClean();
+    }
+
+    /**
+     * 指定された世代数とボードの内容を上書き出力する
+     *
+     * @param int $numberOfGenerations
+     * @return void
+     */
+    private function printBoardCleanWithGen(int $numberOfGenerations): void
+    {
+        echo($numberOfGenerations . '==========' . PHP_EOL);
+        $this->printBoardClean();
     }
 }

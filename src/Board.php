@@ -152,8 +152,8 @@ readonly class Board
                     continue;
                 }
                 // 範囲外はカウントしない
-                if ($i < 0 || $i >= $this->maxX ||
-                    $j < 0 || $j >= $this->maxY) {
+                if ($i < 0 || $i >= $this->maxY ||
+                    $j < 0 || $j >= $this->maxX) {
                     continue;
                 }
                 // 生きているセルをカウントする
