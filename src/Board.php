@@ -15,7 +15,8 @@ readonly class Board
     private function __construct(
         private array $board,
         private array $cells,
-        private array $marks
+        private array $marks,
+        private AnsiEscapeCode $terminal
     ) {
         $this->maxX = count($board[0]);
         $this->maxY = count($board);
@@ -52,7 +53,7 @@ readonly class Board
                 $cells[$i][$j] = Cell::create($marks[$board[$i][$j]]);
             }
         }
-        return new self($board, $cells, $marks);
+        return new self($board, $cells, $marks, new AnsiEscapeCode());
     }
 
     /**
@@ -128,8 +129,8 @@ readonly class Board
      */
     public function printClean(int $waitingSeconds = 1): void
     {
-        AnsiEscapeCode::clear();
-        AnsiEscapeCode::moveCursorToUpperLeft();
+        $this->terminal->clear();
+        $this->terminal->moveCursorToUpperLeft();
         $this->print();
         sleep($waitingSeconds);
     }
@@ -152,8 +153,8 @@ readonly class Board
                     continue;
                 }
                 // 範囲外はカウントしない
-                if ($i < 0 || $i >= $this->maxX ||
-                    $j < 0 || $j >= $this->maxY) {
+                if ($i < 0 || $i >= $this->maxY ||
+                    $j < 0 || $j >= $this->maxX) {
                     continue;
                 }
                 // 生きているセルをカウントする

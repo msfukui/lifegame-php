@@ -16,5 +16,11 @@ format:
 test:
 	-@docker compose exec dev vendor/bin/pest
 
-sample:
-	-@docker compose exec dev php src/Sample.php
+blinker:
+	-@docker compose exec dev php src/Blinker.php
+clock:
+	-@docker compose exec dev php src/Clock.php
+toad:
+	-@docker compose exec dev php src/Toad.php
+beacon:
+	-@docker compose exec dev php src/Beacon.php

@@ -8,7 +8,7 @@ use Exception;
 
 describe('Board#create', function () {
 
-    it('ライフゲーム(ブリンカー)の初期ボードを生成する', function () {
+    it('ライフゲームの初期ボードを生成する', function () {
         $board = Board::create(
             board: [
                 ['□', '□', '□', '□', '□'],
@@ -76,7 +76,7 @@ describe('Board#maxX', function () {
 
 describe('Board#print', function () {
 
-    it('ライフゲーム(ブリンカー)の初期値を標準出力する', function () {
+    it('ライフゲームのボードの初期値を標準出力する', function () {
         ob_start();
         Board::create(
             [
@@ -129,7 +129,7 @@ describe('Board#outputCell', function () {
 
 describe('Board#printClean', function () {
 
-    it('ライフゲーム(ブリンカー)の初期値を標準出力する', function () {
+    it('ライフゲームのボードの初期値を上書き出力する', function () {
         ob_start();
         Board::create(
             [
